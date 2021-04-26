@@ -31,11 +31,17 @@
   },
   "homepage": "https://github.com/DEV-MUGLES/pickk-server-cron#readme",
   "dependencies": {
-    "fastify": "^3.15.0"
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "fastify": "^3.15.0",
+    "fastify-plugin": "^3.0.0",
+    "node-schedule": "^2.0.0"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/jest": "^26.0.23",
     "@types/node": "^14.14.41",
+    "@types/node-schedule": "^1.3.1",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "eslint": "^7.25.0",
@@ -46,5 +52,25 @@
     "ts-jest": "^26.5.5",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.4"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "@src/(.*)$": "<rootDir>/$1"
+    }
   }
 }
