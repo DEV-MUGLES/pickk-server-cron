@@ -1,12 +1,22 @@
 import fastify from 'fastify';
 
-const server = fastify();
+import { fastifyCron } from './plugins';
+import { jobsRoute } from './routes';
 
-server.get('/ping', async (request, reply) => {
-  return 'pong\n';
-});
+export const buildFastify = () => {
+  const instance = fastify({ logger: false });
 
-server.listen(8080, (err, address) => {
+  instance.get('/', async () => {
+    return 'Hello Cron!';
+  });
+
+  instance.register(fastifyCron);
+  instance.register(jobsRoute);
+
+  return instance;
+};
+
+buildFastify().listen(8080, (err, address) => {
   if (err) {
     console.error(err);
     process.exit(1);
