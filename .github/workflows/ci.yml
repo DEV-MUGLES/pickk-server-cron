@@ -51,5 +51,10 @@ jobs:
       - name: Type check
         run: npm run tsc
 
-      - name: Unit test
-        run: npm run test
+      - name: Make coverage
+        run: npm run coverage
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
