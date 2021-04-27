@@ -8,6 +8,7 @@ const jobProperty = {
     name: { type: 'string' },
     rule: { type: 'string' },
     endPoint: { type: 'string' },
+    skip: { type: 'boolean' },
   },
 };
 
@@ -16,15 +17,11 @@ export const isParamsContainName = (
 ): query is { name: string; [key: string]: any } =>
   query != null && typeof (query as any).name === 'string';
 
-export const jobsRoute: FastifyPluginCallback = (fastify, options, next) => {
-  fastify.route({
+export const jobsRoute: FastifyPluginCallback = (app, opts, next) => {
+  app.route({
     method: 'GET',
     url: '/jobs',
     schema: {
-      querystring: {
-        name: { type: 'string' },
-        excitement: { type: 'integer' },
-      },
       response: {
         200: {
           type: 'array',
@@ -37,7 +34,7 @@ export const jobsRoute: FastifyPluginCallback = (fastify, options, next) => {
     },
   });
 
-  fastify.route({
+  app.route({
     method: 'GET',
     url: '/jobs/:name',
     schema: {

@@ -2,11 +2,8 @@ import { FastifyInstance } from 'fastify';
 import fp, { PluginMetadata } from 'fastify-plugin';
 import schedule from 'node-schedule';
 import axios from 'axios';
-import { config } from 'dotenv';
 
 import { jobData } from '../jobs';
-
-config();
 
 function plugin(
   fastify: FastifyInstance,
@@ -14,11 +11,14 @@ function plugin(
   next: (err?: Error) => void
 ) {
   fastify.addHook('onReady', (done) => {
-    jobData.forEach(({ name, rule, endPoint }) =>
+    jobData.forEach(({ name, rule, endPoint, skip }) => {
+      if (skip) {
+        return;
+      }
       schedule.scheduleJob(name, rule, async () => {
         await axios.post(process.env.SERVER_URL + endPoint);
-      })
-    );
+      });
+    });
     done();
   });
 
