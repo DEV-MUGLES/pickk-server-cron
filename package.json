@@ -10,10 +10,10 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"src/**/*.ts\" --fix",
     "tsc": "tsc -p tsconfig.json --noEmit",
-    "prepublish": "npm run format && npm run lint && npm run test",
-    "test": "jest",
+    "jest": "jest",
     "coverage": "jest --coverage",
-    "eb:prod": "npm install --only=prod && npm run build && npm run start"
+    "test": "npm run format && npm run lint && npm run jest",
+    "eb:prod": "npm install && npm run build && npm run start"
   },
   "repository": {
     "type": "git",

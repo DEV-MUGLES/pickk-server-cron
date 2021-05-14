@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "plugin",
-        "route"
+        "route",
+        "npm"
     ]
 }
