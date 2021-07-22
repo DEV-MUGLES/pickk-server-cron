@@ -19,11 +19,9 @@
     </a>
 </p>
 
+<p style="font-size: 40px;">현재 사용되지 않습니다.</p>
+
 Pickk-server에게 cron job request를 보냅니다.
-
-## Requirements
-
-- [nodejs](https://github.com/nodejs/node) >= 0.12.x
 
 ## Getting Started
 
@@ -43,11 +41,3 @@ $ npm run format
 $ npm run lint
 $ npm run test
 ```
-
-## Author
-
-- [Sumin Choi](https://sumini.dev)
-
-## License
-
-This Package is [MIT licensed](https://github.com/greatSumini/inicis/blob/master/LICENSE).
